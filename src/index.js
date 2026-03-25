@@ -5,16 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 // ✅ IMPORT ROUTER
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     {/* ✅ WRAP APP WITH ROUTER */}
-    <BrowserRouter>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+      </HashRouter>
   </React.StrictMode>
 );
 

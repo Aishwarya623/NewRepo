@@ -1,5 +1,5 @@
-import { Routes, Route, useLocation,useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+// import { useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import LandingPage from "./views/LandingPage";
 import Services from "./views/Services";
@@ -8,16 +8,16 @@ import FAQ from "./views/FAQ";
 
 const App = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const redirect = params.get("redirect");
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const redirect = params.get("redirect");
 
-    if (redirect) {
-      navigate(redirect);
-    }
-  }, []);
+  //   if (redirect) {
+  //     navigate(redirect);
+  //   }
+  // }, []);
   return (
     <HelmetProvider>
       <Routes location={location} key={location.pathname}>
