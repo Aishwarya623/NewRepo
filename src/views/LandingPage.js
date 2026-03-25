@@ -1,149 +1,123 @@
-import gsap from 'gsap';
-import { useEffect } from 'react';
-import contact from '../resources/img/contact.jpg';
-import services from '../resources/img/services.jpg';
+import React from 'react';
+import { PageWrapper } from '../components/PageWrapper';
+import { Helmet } from 'react-helmet-async';
 import nova_main from '../resources/img/nova_main.jpeg';
 import logo_close_transparent from '../resources/img/transparent/logo_close_transparent.png';
-import logo_transparent from '../resources/img/transparent/logo_transparent.png';
-import RequestDemoDialog from '../components/RequestDemoDialog';
-import ServiceDemoDialog from '../components/ServiceDemoDialog';
-import { useState } from 'react';
-import '../App.css'
-import '../App.scss'
+import { Box, Typography, Button, Grid, Card as MuiCard, CardContent } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const LandingPage = () => {
-
-    const [open, setOpen] = useState(false);
-    const [openService, setOpenServices] = useState(false);
-    const handleOpen = (row) => setOpen(true);
-    const handleOpenServices = (row) => setOpenServices(true);
-
-
-    const handleClose = () => setOpen(false);
-    const handleCloseService = () => setOpenServices(false);
-
-    useEffect(() => {
-        let sections = document.querySelectorAll(".section"),
-            images = document.querySelectorAll(".background"),
-            headings = document.querySelectorAll(".section-title"),
-            outerWrappers = document.querySelectorAll(".wrapper-outer"),
-            innerWrappers = document.querySelectorAll(".wrapper-inner"),
-            currentIndex = -1,
-            wrap = (index, max) => (index + max) % max,
-            animating;
-
-        gsap.set(outerWrappers, { yPercent: 100 });
-        gsap.set(innerWrappers, { yPercent: -100 });
-
-        function gotoSection(index, direction) {
-            index = wrap(index, sections.length);
-            animating = true;
-
-            let fromTop = direction === -1;
-            let dFactor = fromTop ? -1 : 1;
-            let tl = gsap.timeline({ defaults: { duration: 1.25, ease: "power1.inOut" }, onComplete: () => (animating = false) });
-
-            if (currentIndex >= 0) {
-                gsap.set(sections[currentIndex], { zIndex: 0 });
-                tl.to(images[currentIndex], { yPercent: -15 * dFactor })
-                    .set(sections[currentIndex], { autoAlpha: 0 });
-            }
-
-            gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-            tl.fromTo([outerWrappers[index], innerWrappers[index]], { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) }, { yPercent: 0 }, 0)
-                .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-                .fromTo(headings[index], { autoAlpha: 0, yPercent: 150 * dFactor }, {
-                    autoAlpha: 1,
-                    yPercent: 0,
-                    duration: 1,
-                    ease: "power2",
-                    stagger: { each: 0.02, from: "random" },
-                }, 0.2);
-
-            currentIndex = index;
-        }
-
-        function navigateSectionById(id) {
-            let index = Array.from(sections).findIndex(section => section.id === id);
-
-            if (index !== -1 && index !== currentIndex) {
-                gotoSection(index, index > currentIndex ? 1 : -1);
-            }
-        }
-
-        let lastTap = 0;
-        document.addEventListener("touchend", function (event) {
-            let currentTime = new Date().getTime();
-            let tapLength = currentTime - lastTap;
-            if (tapLength < 500 && tapLength > 0) {
-                gotoSection(currentIndex + 1, 1);
-                event.preventDefault();
-            }
-            lastTap = currentTime;
-        });
-
-        window.addEventListener("wheel", (event) => {
-            if (event.deltaY < 0 && !animating) {
-                gotoSection(currentIndex - 1, -1);
-            } else if (event.deltaY > 0 && !animating) {
-                gotoSection(currentIndex + 1, 1);
-            }
-        });
-
-        document.querySelectorAll("nav a").forEach(a => {
-            a.addEventListener("click", e => {
-                e.preventDefault();
-                navigateSectionById(e.currentTarget.getAttribute("href").slice(1));
-            });
-        });
-
-        gotoSection(0, 1);
-    }, []);
-
     return (
-        <>
-            <div className="app-container">
-                <header className="header">
-                    <nav>
-                        <a href="#first">Home</a>&nbsp;&nbsp;
-                        <a href="#second" onClick={handleOpenServices}>Services</a>&nbsp;&nbsp;
-                        <a href="#fifth" onClick={handleOpen}>Contact</a>
-                    </nav>
-                </header>
-                <Section id="first" title="Nova Enigma" className="first" bgUrl={nova_main} />
-                <Section id="second" title="" className="second" bgUrl={services} />
-                <Section id="fifth" title="" className="fifth" bgUrl={contact} />
-            </div>
-            {open && (
-                <RequestDemoDialog
-                    open={open}
-                    handleClose={handleClose}
-                />
-            )}
+        <PageWrapper
+            title="Nova Enigma - AI Development & Software Solutions | Bangalore, India"
+            metaDescription="Nova Enigma is a top AI Development & Software Solutions Company in Bangalore, India. We build scalable intelligent systems for modern businesses."
+            canonicalUrl="https://novaenigma.in/"
+            bgUrl={nova_main}
+            sectionId="first"
+            className="first"
+        >
+            <Helmet>
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "LocalBusiness",
+                        "name": "Nova Enigma",
+                        "image": "https://novaenigma.in/logo512.png",
+                        "url": "https://novaenigma.in/",
+                        "telephone": "",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Bangalore",
+                            "addressCountry": "India"
+                        },
+                        "description": "AI Development & Software Solutions Company in Bangalore, India building scalable intelligent systems for modern businesses."
+                    }
+                `}
+                </script>
+            </Helmet>
 
-            {openService && (
-                <ServiceDemoDialog
-                openService={openService}
-                handleCloseService={handleCloseService}
-                />
-            )}
-        </>
+            <Box sx={{
+                width: "100%",
+                maxWidth: "1200px",
+                margin: "0 auto",
+                padding: { xs: "80px 20px 20px", md: "100px 40px 40px" },
+                display: "flex",
+                flexDirection: "column",
+                gap: "3rem",
+            }}>
+                {/* 1. Hero Section */}
+                <Box sx={{ textAlign: "center", backgroundColor: "rgba(0,0,0,0.6)", padding: { xs: "2rem", md: "3rem" }, borderRadius: "12px", backdropFilter: "blur(5px)" }}>
+                    <img height={120} src={logo_close_transparent} alt="Nova Enigma AI Development Company Logo" style={{ marginBottom: "1rem" }} />
+                    <Typography variant="h1" sx={{ color: "white", fontSize: { xs: "2.5rem", md: "4rem" }, fontWeight: "bold", mb: 2 }}>
+                        Nova Enigma
+                    </Typography>
+                    <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.2rem", md: "1.8rem" }, fontWeight: "500", mb: 3 }}>
+                        AI Development & Software Solutions in Bangalore, India
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.9)", fontSize: "1.1rem", maxWidth: "800px", margin: "0 auto", mb: 4, lineHeight: 1.6 }}>
+                        We build scalable intelligent systems, Generative AI models, and robust software applications for modern businesses.
+                        As a premier AI development company based in Bangalore, India, we focus on delivering high-performance solutions tailored to solve complex business challenges.
+                    </Typography>
+                </Box>
+
+                {/* 2. Services Preview Section */}
+                <Box>
+                    <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.8rem", md: "2.5rem" }, fontWeight: "bold", textAlign: "center", mb: 4, textShadow: "1px 1px 4px rgba(0,0,0,0.8)" }}>
+                        Our Core Services
+                    </Typography>
+                    <Grid container spacing={4} justifyContent="center">
+                        {['Generative AI', 'Cloud Computing', 'IoT Solutions'].map((service, index) => (
+                            <Grid item xs={12} sm={4} key={index}>
+                                <MuiCard sx={{
+                                    backgroundColor: "rgba(255,255,255,0.9)",
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                    height: "100%",
+                                    "&:hover": {
+                                        transform: "translateY(-10px)",
+                                        boxShadow: "0px 15px 30px rgba(0,0,0,0.5)"
+                                    }
+                                }}>
+                                    <CardContent sx={{ textAlign: "center", py: 4 }}>
+                                        <Typography variant="h3" component="h3" sx={{ fontSize: "1.5rem", fontWeight: "bold", mb: 2, color: "#0e48fe" }}>
+                                            {service}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary" sx={{ fontSize: "1rem", lineHeight: 1.5 }}>
+                                            Cutting-edge {service.toLowerCase()} solutions driving transformation and efficiency for businesses in Bangalore and across the globe.
+                                        </Typography>
+                                    </CardContent>
+                                </MuiCard>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Box>
+
+                {/* 3. CTA Section */}
+                <Box sx={{ textAlign: "center", mt: 2, backgroundColor: "rgba(0,0,0,0.6)", padding: "2rem", borderRadius: "12px", backdropFilter: "blur(5px)" }}>
+                    <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.5rem", md: "2rem" }, fontWeight: "bold", mb: 3 }}>
+                        Ready to elevate your business?
+                    </Typography>
+                    <Button
+                        component={Link}
+                        to="/contact"
+                        variant="contained"
+                        size="large"
+                        sx={{
+                            backgroundColor: "#0e48fe",
+                            color: "white",
+                            fontSize: "1.1rem",
+                            padding: "12px 36px",
+                            borderRadius: "30px",
+                            fontWeight: "bold",
+                            "&:hover": { backgroundColor: "#29e6a7", color: "black" }
+                        }}
+                    >
+                        Contact Our Team
+                    </Button>
+                </Box>
+            </Box>
+        </PageWrapper>
     );
 };
 
-const Section = ({ id, title, className, bgUrl }) => {
-    return (
-        <section id={id} className={`section ${className}`}>
-            <div className="wrapper-outer">
-                <div className="wrapper-inner">
-                    <div className="background" style={{ backgroundImage: `url(${bgUrl})` }}>
-                        <div style={{ textAlign: 'center' }} >
-                            {title && (<img height={200} src={logo_close_transparent} />)}
-                            <h2 className="section-title title">{title}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
-}
+export default LandingPage;
