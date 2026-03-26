@@ -1,5 +1,5 @@
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+// import { useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import LandingPage from "./views/LandingPage";
 import Services from "./views/Services";
@@ -9,17 +9,17 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
-  const navigate = useNavigate();   // ✅ ADD THIS
+  // const navigate = useNavigate();   // ✅ ADD THIS
 
-  // ✅ ADD THIS BLOCK (redirect handler)
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const redirect = params.get("redirect");
+  // // ✅ ADD THIS BLOCK (redirect handler)
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const redirect = params.get("redirect");
 
-    if (redirect) {
-      navigate(redirect, { replace: true });
-    }
-  }, [navigate]);
+  //   if (redirect) {
+  //     navigate(redirect, { replace: true });
+  //   }
+  // }, [navigate]);
 
   return (
     <HelmetProvider>
