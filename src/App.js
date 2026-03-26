@@ -9,16 +9,18 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();   // ✅ ADD THIS
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const redirect = params.get("redirect");
+  // ✅ ADD THIS BLOCK (redirect handler)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get("redirect");
 
-  //   if (redirect) {
-  //     navigate(redirect);
-  //   }
-  // }, []);
+    if (redirect) {
+      navigate(redirect, { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <HelmetProvider>
       <ScrollToTop />
