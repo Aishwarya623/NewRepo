@@ -128,14 +128,14 @@ export const LandingPage = () => {
                 </Box>
 
                 {/* 4. Industries We Serve */}
-                <Box sx={{ mt: 2 }}>
+                {/* <Box sx={{ mt: 2 }}>
                     <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.8rem", md: "2.5rem" }, fontWeight: "bold", textAlign: "center", mb: 4, textShadow: "1px 1px 4px rgba(0,0,0,0.8)" }}>
                         Industries We Empower
                     </Typography>
                     <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.9)", fontSize: "1.1rem", maxWidth: "900px", margin: "0 auto", mb: 4, lineHeight: 1.6, textAlign: "center" }}>
                         From optimizing supply chain logistics to revolutionizing healthcare diagnostics, Nova Enigma creates software that transcends industry boundaries. We proudly build tailored architectures for FinTech, Healthcare, Retail & E-Commerce, Manufacturing, and Education sectors across India and globally.
                     </Typography>
-                </Box>
+                </Box> */}
 
                 {/* 5. CTA Section */}
                 <Box sx={{ textAlign: "center", mt: 2, backgroundColor: "rgba(0,0,0,0.6)", padding: "4rem 2rem", borderRadius: "12px", backdropFilter: "blur(5px)" }}>
