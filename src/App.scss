@@ -47,17 +47,15 @@ body {
     color: white;
     background: black;
     font-family: "Inter", sans-serif;
-    text-transform: uppercase;
 }
 
 .title {
-    font-size: clamp(1rem, 5vw, 5rem);
-    font-family: "Playfair Display", serif;
-    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
     text-align: center;
-    letter-spacing: 0.5em;
-    margin-right: -0.5em;
-    color: hsl(0, 0, 80%);
+    letter-spacing: 0.1em;
+    color: white;
     width: 90vw;
     max-width: 1200px;
 }

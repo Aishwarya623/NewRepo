@@ -84,15 +84,15 @@ export const Contact = () => {
                 gap: "3rem",
             }}>
                 {/* 1. Hero Section */}
-                <Box sx={{ textAlign: "center", backgroundColor: "rgba(0,0,0,0.7)", padding: { xs: "2rem", md: "2rem" }, borderRadius: "12px", backdropFilter: "blur(5px)" }}>
+                <Box sx={{ textAlign: "center", backgroundColor: "rgba(0,0,0,0.7)", padding: { xs: "2rem", md: "3rem" }, borderRadius: "12px", backdropFilter: "blur(5px)" }}>
                     <Typography variant="h1" sx={{ color: "white", fontSize: { xs: "2.5rem", md: "3.5rem" }, fontWeight: "bold", mb: 2 }}>
-                        Contact Us
+                        Contact Nova Enigma
                     </Typography>
                     <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.2rem", md: "1.5rem" }, fontWeight: "500", mb: 3 }}>
-                        Partner with the leading AI Development Company in Bangalore, India
+                        Partner with the Leading AI Development Company in Bangalore, India
                     </Typography>
-                    <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.9)", fontSize: "1.1rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.6 }}>
-                        Whether you need scalable cloud solutions, IoT integration, or Generative AI models, our team is ready to help you achieve your business goals. Reach out today.
+                    <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.9)", fontSize: "1.1rem", maxWidth: "900px", margin: "0 auto", lineHeight: 1.6, textAlign: "justify" }}>
+                        Digital transformation requires a dependable technology partner. Whether you are looking to architect globally scalable cloud solutions, implement intricate cross-functional IoT integration, or train completely bespoke Generative AI models, the engineering experts at Nova Enigma are prepared to bring your vision to life. Based strategically in Bangalore, the technology hub of India, we cater to ambitious startups and established enterprises globally. Reach out to discuss how our custom software solutions can streamline your workflows, drastically reduce operational bottlenecks, and grant you a long-term competitive advantage in your industry.
                     </Typography>
                 </Box>
 

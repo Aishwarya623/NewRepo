@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Footer from './Footer';
 import '../App.css';
 import '../App.scss';
 
@@ -49,8 +50,11 @@ export const PageWrapper = ({ title, metaDescription, canonicalUrl, bgUrl, secti
                     <div className="wrapper-outer" ref={outerRef}>
                         <div className="wrapper-inner" ref={innerRef}>
                             <div className="background" ref={bgRef} style={{ backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url(${bgUrl})` }}>
-                                <div ref={contentRef} style={{ textAlign: 'center', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingBottom: '3rem' }}>
-                                    {children}
+                                <div ref={contentRef} style={{ width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column' }}>
+                                    <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingBottom: '3rem' }}>
+                                        {children}
+                                    </div>
+                                    <Footer />
                                 </div>
                             </div>
                         </div>

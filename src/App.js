@@ -5,6 +5,7 @@ import LandingPage from "./views/LandingPage";
 import Services from "./views/Services";
 import Contact from "./views/Contact";
 import FAQ from "./views/FAQ";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const App = () => {
   // }, []);
   return (
     <HelmetProvider>
+      <ScrollToTop />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/services" element={<Services />} />

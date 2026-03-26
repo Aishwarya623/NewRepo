@@ -78,12 +78,15 @@ export const FAQ = () => {
                 flexDirection: "column",
                 gap: "2rem",
             }}>
-                <Box sx={{ textAlign: "center", backgroundColor: "rgba(0,0,0,0.7)", padding: { xs: "2rem", md: "2rem" }, borderRadius: "12px", backdropFilter: "blur(5px)" }}>
+                <Box sx={{ textAlign: "center", backgroundColor: "rgba(0,0,0,0.7)", padding: { xs: "2rem", md: "3rem" }, borderRadius: "12px", backdropFilter: "blur(5px)" }}>
                     <Typography variant="h1" sx={{ color: "white", fontSize: { xs: "2.5rem", md: "3.5rem" }, fontWeight: "bold", mb: 2 }}>
                         Frequently Asked Questions
                     </Typography>
                     <Typography variant="h2" component="h2" sx={{ color: "white", fontSize: { xs: "1.2rem", md: "1.5rem" }, fontWeight: "500", mb: 3 }}>
                         Learn more about our AI Development & Software Solutions in Bangalore
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.9)", fontSize: "1.1rem", maxWidth: "800px", margin: "0 auto", lineHeight: 1.6 }}>
+                        Deciding on the right technology stack, engineering strategy, and software partner involves a myriad of technical questions. Over our years of experience orchestrating digital transformation for companies in India and globally, we've compiled the most common queries regarding our Generative AI, Cloud Computing, and custom software development processes. Read on to discover how Nova Enigma tackles complex engineering challenges.
                     </Typography>
                 </Box>
 
